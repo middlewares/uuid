@@ -1,7 +1,7 @@
 # middlewares/uuid
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
+[![Software License][ico-license]](LICENSE)
 [![Build Status][ico-travis]][link-travis]
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -15,7 +15,7 @@ The UUID generated is compatible with [RFC 4122](http://tools.ietf.org/html/rfc4
 
 * PHP >= 5.6
 * A [PSR-7](https://packagist.org/providers/psr/http-message-implementation) http mesage implementation ([Diactoros](https://github.com/zendframework/zend-diactoros), [Guzzle](https://github.com/guzzle/psr7), [Slim](https://github.com/slimphp/Slim), etc...)
-* A [PSR-15](https://github.com/http-interop/http-middleware) middleware dispatcher ([Middleman](https://github.com/mindplay-dk/middleman), etc...)
+* A [PSR-15 middleware dispatcher](https://github.com/middlewares/awesome-psr15-middlewares#dispatcher)
 
 ## Installation
 
@@ -37,7 +37,7 @@ $dispatcher = new Dispatcher([
     }
 ]);
 
-$response = $dispatcher->dispatch(new Request());
+$response = $dispatcher->dispatch(new ServerRequest());
 
 //Get the UUID from the response
 echo $response->getHeaderLine('X-Uuid');
