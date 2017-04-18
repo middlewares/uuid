@@ -43,6 +43,12 @@ $response = $dispatcher->dispatch(new ServerRequest());
 echo $response->getHeaderLine('X-Uuid');
 ```
 
+## Options
+
+#### `header(string $header)`
+
+To configure the header name. By default is `X-Uuid`.
+
 ---
 
 Please see [CHANGELOG](CHANGELOG.md) for more information about recent changes and [CONTRIBUTING](CONTRIBUTING.md) for contributing details.
