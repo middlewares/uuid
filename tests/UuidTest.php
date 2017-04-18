@@ -16,11 +16,26 @@ class UuidTest extends \PHPUnit_Framework_TestCase
             },
         ]);
 
-        $this->assertInstanceOf('Psr\\Http\\Message\\ResponseInterface', $response);
         $this->assertRegExp(
             '/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/',
             $response->getHeaderLine('X-Uuid')
         );
         $this->assertEquals($response->getHeaderLine('X-Uuid'), (string) $response->getBody());
+    }
+
+    public function testHeader()
+    {
+        $response = Dispatcher::run([
+            (new Uuid())->header('X-Request-Id'),
+            function ($request) {
+                echo $request->getHeaderLine('X-Request-Id');
+            },
+        ]);
+
+        $this->assertRegExp(
+            '/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/',
+            $response->getHeaderLine('X-Request-Id')
+        );
+        $this->assertEquals($response->getHeaderLine('X-Request-Id'), (string) $response->getBody());
     }
 }

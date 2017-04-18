@@ -10,7 +10,21 @@ use Ramsey\Uuid\Uuid as UuidFactory;
 
 class Uuid implements MiddlewareInterface
 {
-    const HEADER = 'X-Uuid';
+    private $header = 'X-Uuid';
+
+    /**
+     * Configure the header name to store the identifier
+     *
+     * @param string $header
+     *
+     * @return self
+     */
+    public function header($header)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
 
     /**
      * Process a request and return a response.
@@ -24,7 +38,7 @@ class Uuid implements MiddlewareInterface
     {
         $uuid = (string) UuidFactory::uuid4();
 
-        return $delegate->process($request->withHeader(self::HEADER, $uuid))
-            ->withHeader(self::HEADER, $uuid);
+        return $delegate->process($request->withHeader($this->header, $uuid))
+            ->withHeader($this->header, $uuid);
     }
 }
