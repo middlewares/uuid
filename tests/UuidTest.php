@@ -2,9 +2,9 @@
 
 namespace Middlewares\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Middlewares\Uuid;
 use Middlewares\Utils\Dispatcher;
+use Middlewares\Uuid;
+use PHPUnit\Framework\TestCase;
 
 class UuidTest extends TestCase
 {
