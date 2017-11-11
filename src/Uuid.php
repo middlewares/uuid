@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace Middlewares;
 
@@ -14,12 +15,8 @@ class Uuid implements MiddlewareInterface
 
     /**
      * Configure the header name to store the identifier
-     *
-     * @param string $header
-     *
-     * @return self
      */
-    public function header($header)
+    public function header(string $header): self
     {
         $this->header = $header;
 
@@ -28,13 +25,8 @@ class Uuid implements MiddlewareInterface
 
     /**
      * Process a request and return a response.
-     *
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $uuid = (string) UuidFactory::uuid4();
 
