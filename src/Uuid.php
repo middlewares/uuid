@@ -28,7 +28,7 @@ class Uuid implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $uuid = (string) UuidFactory::uuid4();
+        $uuid = UuidFactory::uuid4()->toString();
 
         return $handler->handle($request->withHeader($this->header, $uuid))
             ->withHeader($this->header, $uuid);
