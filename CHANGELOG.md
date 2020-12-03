@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.0.0] - Unreleased
+## [2.0.0] - 2020-12-03
 ### Added
 - Support for PHP 8
 
@@ -58,7 +58,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 0.1.0 - 2016-10-05
 First version
 
-[2.0.0]: https://github.com/middlewares/uuid/compare/v1.1.0...HEAD
+[2.0.0]: https://github.com/middlewares/uuid/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/middlewares/uuid/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/middlewares/uuid/compare/v0.6.0...v1.0.0
 [0.6.0]: https://github.com/middlewares/uuid/compare/v0.5.0...v0.6.0
