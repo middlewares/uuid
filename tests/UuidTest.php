@@ -8,6 +8,19 @@ use PHPUnit\Framework\TestCase;
 
 class UuidTest extends TestCase
 {
+    /**
+     * phpunit 8 support
+     */
+    public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
+    {
+        if (method_exists(parent::class, 'assertMatchesRegularExpression')) {
+            parent::assertMatchesRegularExpression($pattern, $string, $message);
+            return;
+        }
+
+        self::assertRegExp($pattern, $string, $message);
+    }
+
     public function testUuid()
     {
         $response = Dispatcher::run([
@@ -17,11 +30,11 @@ class UuidTest extends TestCase
             },
         ]);
 
-        $this->assertMatchesRegularExpression(
+        self::assertMatchesRegularExpression(
             '/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/',
             $response->getHeaderLine('X-Uuid')
         );
-        $this->assertEquals($response->getHeaderLine('X-Uuid'), (string) $response->getBody());
+        self::assertEquals($response->getHeaderLine('X-Uuid'), (string) $response->getBody());
     }
 
     public function testHeader()
@@ -33,10 +46,10 @@ class UuidTest extends TestCase
             },
         ]);
 
-        $this->assertMatchesRegularExpression(
+        self::assertMatchesRegularExpression(
             '/[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/',
             $response->getHeaderLine('X-Request-Id')
         );
-        $this->assertEquals($response->getHeaderLine('X-Request-Id'), (string) $response->getBody());
+        self::assertEquals($response->getHeaderLine('X-Request-Id'), (string) $response->getBody());
     }
 }
