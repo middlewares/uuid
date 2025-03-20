@@ -11,6 +11,7 @@ use Ramsey\Uuid\Uuid as UuidFactory;
 
 class Uuid implements MiddlewareInterface
 {
+    /** @var string  */
     private $header = 'X-Uuid';
 
     /**

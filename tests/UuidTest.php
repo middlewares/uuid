@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Middlewares\Tests;
 
 use Middlewares\Utils\Dispatcher;
@@ -13,6 +15,7 @@ class UuidTest extends TestCase
      */
     public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
     {
+        /** @phpstan-ignore function.alreadyNarrowedType */
         if (method_exists(parent::class, 'assertMatchesRegularExpression')) {
             parent::assertMatchesRegularExpression($pattern, $string, $message);
             return;
@@ -21,7 +24,7 @@ class UuidTest extends TestCase
         self::assertRegExp($pattern, $string, $message);
     }
 
-    public function testUuid()
+    public function testUuid(): void
     {
         $response = Dispatcher::run([
             new Uuid(),
@@ -37,7 +40,7 @@ class UuidTest extends TestCase
         self::assertEquals($response->getHeaderLine('X-Uuid'), (string) $response->getBody());
     }
 
-    public function testHeader()
+    public function testHeader(): void
     {
         $response = Dispatcher::run([
             (new Uuid())->header('X-Request-Id'),
