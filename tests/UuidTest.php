@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Middlewares\Tests;
 
@@ -15,9 +15,10 @@ class UuidTest extends TestCase
      */
     public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
     {
-        /** @phpstan-ignore function.alreadyNarrowedType */
+        /* @phpstan-ignore function.alreadyNarrowedType */
         if (method_exists(parent::class, 'assertMatchesRegularExpression')) {
             parent::assertMatchesRegularExpression($pattern, $string, $message);
+
             return;
         }
 
